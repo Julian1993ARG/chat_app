@@ -36,12 +36,12 @@ class AppTheme {
           900: _myColors[selectedColor],
         }),
       ),
-      appBarTheme: AppBarTheme(
-        backgroundColor: Colors.grey[200],
-        foregroundColor: Colors.black,
-        titleTextStyle: const TextStyle(color: Colors.black),
-        iconTheme: const IconThemeData(color: Colors.black),
-      ),
+      // appBarTheme: AppBarTheme(
+      //   backgroundColor: Colors.grey[200],
+      //   foregroundColor: Colors.black,
+      //   titleTextStyle: const TextStyle(color: Colors.black),
+      //   iconTheme: const IconThemeData(color: Colors.black),
+      // ),
       textTheme: const TextTheme(
         displayLarge: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
         displayMedium: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
