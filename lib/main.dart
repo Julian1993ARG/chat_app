@@ -1,4 +1,3 @@
-import 'package:chat_app/config/theme/app_theme.dart';
 import 'package:chat_app/presentation/chat/chat_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +11,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Chat app',
       debugShowCheckedModeBanner: false,
-      theme: AppTheme().theme(),
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.purple,
+          // brightness: Brightness.dark,
+          ),
+      ),
       home: const ChatScreen(),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class HerMessageBubble extends StatelessWidget {
   const HerMessageBubble({super.key});
@@ -13,14 +14,14 @@ class HerMessageBubble extends StatelessWidget {
       children: [
       Container(
         decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(100),
           color: colors.secondary,
-          borderRadius: BorderRadius.circular(100)
           ),
-        child: const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        child:  Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Text(
             "Her Message",
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: colors.background),
           ),
         ),
       ),
