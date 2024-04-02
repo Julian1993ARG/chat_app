@@ -1,47 +1,22 @@
 import 'package:flutter/material.dart';
 
-const Color _myColor = Color(0xFF00A19D);
-// ignore: unused_element
-const List<Color> _myColors = [
-  _myColor,
-  Colors.white,
-  Colors.blue,
-  Colors.red,
-  Colors.green,
-  Colors.yellow,
-  Colors.orange
-];
-
 class AppTheme {
-  final int selectedColor;
-
-  AppTheme({
-    required this.selectedColor
-  }) : assert(selectedColor >= 0 && selectedColor < _myColors.length, 'Invalid color index');
 
   ThemeData theme() {
     return ThemeData(
       useMaterial3: true,
-      colorScheme: ColorScheme.fromSwatch(
-        primarySwatch: MaterialColor(_myColors[selectedColor].value, {
-          50: _myColors[selectedColor],
-          100: _myColors[selectedColor],
-          200: _myColors[selectedColor],
-          300: _myColors[selectedColor],
-          400: _myColors[selectedColor],
-          500: _myColors[selectedColor],
-          600: _myColors[selectedColor],
-          700: _myColors[selectedColor],
-          800: _myColors[selectedColor],
-          900: _myColors[selectedColor],
-        }),
+      colorScheme: const ColorScheme.light(
+        primary: Color.fromARGB(255, 91, 23, 185),
+        secondary: Color.fromARGB(255, 34, 162, 79),
+        surface: Color(0xFFFFFFFF),
+        background: Color(0xFFFFFFFF),
+        error: Color(0xFFB00020),
+        onPrimary: Color(0xFFFFFFFF),
+        onSecondary: Color(0xFF000000),
+        onSurface: Color(0xFF000000),
+        onBackground: Color(0xFF000000),
+        onError: Color(0xFFFFFFFF),
       ),
-      // appBarTheme: AppBarTheme(
-      //   backgroundColor: Colors.grey[200],
-      //   foregroundColor: Colors.black,
-      //   titleTextStyle: const TextStyle(color: Colors.black),
-      //   iconTheme: const IconThemeData(color: Colors.black),
-      // ),
       textTheme: const TextTheme(
         displayLarge: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
         displayMedium: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),

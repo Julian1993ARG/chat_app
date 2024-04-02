@@ -1,3 +1,4 @@
+import 'package:chat_app/presentation/widgets/chat/her_message_bubble.dart';
 import 'package:chat_app/presentation/widgets/chat/my_message_bubbel.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,9 @@ class ChatView extends StatelessWidget {
               child: ListView.builder(
               itemCount: 100,
               itemBuilder: (context, index) {
-                return const MyMessageBubble();
+                return index.isEven
+                    ? const MyMessageBubble()
+                    : const HerMessageBubble();
               },
             )),
             const Text("Type a message")
