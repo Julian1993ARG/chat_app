@@ -6,8 +6,10 @@ class MessageBoxWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final colors = Theme.of(context).colorScheme;
+    final textController = TextEditingController();
+    final focusNode = FocusNode();
 
+    final colors = Theme.of(context).colorScheme;
     final outlineImputBorder = OutlineInputBorder(
       borderRadius: BorderRadius.circular(20),
       borderSide: BorderSide(
@@ -24,12 +26,22 @@ class MessageBoxWidget extends StatelessWidget {
         icon: const Icon(
           Icons.send_outlined,
         ),
-        onPressed: () {},
+        onPressed: () {
+          final textValue = textController.text;
+          textController.clear();
+        },
       ),
     );
 
     return TextFormField(
-      decoration: imputDecoration
+      onTapOutside: (event) => focusNode.unfocus(),
+      focusNode: focusNode,
+      controller: textController,
+      decoration: imputDecoration,
+      onFieldSubmitted: (value) => {
+        textController.clear(),
+        focusNode.requestFocus(),
+      },
     );
   }
 }
