@@ -1,5 +1,6 @@
 import 'package:chat_app/presentation/widgets/chat/her_message_bubble.dart';
 import 'package:chat_app/presentation/widgets/chat/my_message_bubbel.dart';
+import 'package:chat_app/presentation/widgets/shared/message_widget_box.dart';
 import 'package:flutter/material.dart';
 
 class ChatView extends StatelessWidget {
@@ -21,7 +22,7 @@ class ChatView extends StatelessWidget {
                     : const HerMessageBubble();
               },
             )),
-            const Text("Type a message")
+            const MessageBoxWidget()
           ],
         ),
       ),
