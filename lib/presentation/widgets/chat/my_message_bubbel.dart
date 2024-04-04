@@ -1,30 +1,29 @@
+import 'package:chat_app/Models/message.dart';
 import 'package:flutter/material.dart';
 
 class MyMessageBubble extends StatelessWidget {
-  const MyMessageBubble({super.key});
+  final Message message;
+  const MyMessageBubble({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {
-
     final colors = Theme.of(context).colorScheme;
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.end ,
-      children: [
+    return Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
       Container(
         decoration: BoxDecoration(
-          color: colors.primary,
-          borderRadius: BorderRadius.circular(100)
-          ),
+            color: colors.primary, borderRadius: BorderRadius.circular(100)),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Text(
-            "My Message",
+            message.text,
             style: TextStyle(color: colors.background),
           ),
         ),
       ),
-      const SizedBox(height: 10,)
+      const SizedBox(
+        height: 10,
+      )
     ]);
   }
 }
