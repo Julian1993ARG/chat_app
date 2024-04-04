@@ -29,7 +29,7 @@ class ChatView extends StatelessWidget {
                     : HerMessageBubble(message: message);
               },
             )),
-            const MessageBoxWidget()
+            MessageBoxWidget(onSend: chatProvider.sendMessage,)
           ],
         ),
       ),
