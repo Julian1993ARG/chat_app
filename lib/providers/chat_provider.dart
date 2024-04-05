@@ -15,16 +15,17 @@ class ChatProvider extends ChangeNotifier {
 
   Future<void> getYesNoMessage() async {
     messages.add(await _yesNoApi.getYesNoMessage());
+    notifyListeners();
+    moveScrollToBottom();
   }
 
   Future<void> sendMessage(String text) async {
     if (text.isEmpty) return;
     final Message newMessage = Message(text: text, fromWho: FromWho.me);
     messages.add(newMessage);
-    if(text.endsWith("?")) await getYesNoMessage();
-
     notifyListeners();
     moveScrollToBottom();
+    if(text.endsWith("?")) await getYesNoMessage();
   }
 
   Future<void> moveScrollToBottom() async {

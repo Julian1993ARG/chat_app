@@ -1,4 +1,5 @@
 import 'package:chat_app/Models/message.dart';
+import 'package:chat_app/Models/yesno_api_response.dart';
 import 'package:dio/dio.dart';
 
 class YesNoApi {
@@ -6,9 +7,9 @@ class YesNoApi {
 
   Future<Message> getYesNoMessage() async {
     final response = await _dio.get('https://yesno.wtf/api');
-    return Message(
-        text: response.data['answer'],
-        fromWho: FromWho.other,
-        imageUrl: response.data['image']);
+
+    final responseModel = YesNoApiResponse.fromJson(response.data);
+
+    return responseModel.toMessage();
   }
 }

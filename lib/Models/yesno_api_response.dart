@@ -1,21 +1,37 @@
+import 'dart:convert';
+
+import 'package:chat_app/Models/message.dart';
+
+YesNoApiResponse yesNoApiResponseFromJson(String str) => YesNoApiResponse.fromJson(json.decode(str));
+
+String yesNoApiResponseToJson(YesNoApiResponse data) => json.encode(data.toJson());
+
 class YesNoApiResponse {
-  String? answer;
-  bool? forced;
-  String? image;
+    final String answer;
+    final bool forced;
+    final String image;
 
-  YesNoApiResponse({this.answer, this.forced, this.image});
+    YesNoApiResponse({
+        required this.answer,
+        required this.forced,
+        required this.image,
+    });
 
-  YesNoApiResponse.fromJson(Map<String, dynamic> json) {
-    answer = json['answer'];
-    forced = json['forced'];
-    image = json['image'];
-  }
+    factory YesNoApiResponse.fromJson(Map<String, dynamic> json) => YesNoApiResponse(
+        answer: json["answer"],
+        forced: json["forced"],
+        image: json["image"],
+    );
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['answer'] = answer;
-    data['forced'] = forced;
-    data['image'] = image;
-    return data;
-  }
+    Map<String, dynamic> toJson() => {
+        "answer": answer,
+        "forced": forced,
+        "image": image,
+    };
+
+    Message toMessage() => Message(
+      text: answer,
+      imageUrl: image,
+      fromWho: FromWho.other,
+    );
 }
