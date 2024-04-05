@@ -1,9 +1,10 @@
 import 'package:chat_app/Models/message.dart';
+import 'package:chat_app/config/helpers/enpoints_yesno.dart';
 import 'package:flutter/material.dart';
 
 class ChatProvider extends ChangeNotifier {
-
   final ScrollController chatScrollController = ScrollController();
+  final YesNoApi _yesNoApi = YesNoApi();
 
   List<Message> messages = [
     Message(text: 'Hola!', fromWho: FromWho.me),
@@ -12,10 +13,16 @@ class ChatProvider extends ChangeNotifier {
 
   get scrollController => chatScrollController;
 
+  Future<void> getYesNoMessage() async {
+    messages.add(await _yesNoApi.getYesNoMessage());
+  }
+
   Future<void> sendMessage(String text) async {
-    if(text.isEmpty) return;
+    if (text.isEmpty) return;
     final Message newMessage = Message(text: text, fromWho: FromWho.me);
     messages.add(newMessage);
+    if(text.endsWith("?")) await getYesNoMessage();
+
     notifyListeners();
     moveScrollToBottom();
   }
@@ -28,5 +35,4 @@ class ChatProvider extends ChangeNotifier {
       curve: Curves.easeOut,
     );
   }
-
 }

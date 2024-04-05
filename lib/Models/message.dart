@@ -1,7 +1,7 @@
 enum FromWho { me, other }
 
 class Message{
-  String text;
+  String? text;
   String? imageUrl;
   FromWho fromWho;
 
